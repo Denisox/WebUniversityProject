@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head" th:with="pageTitle='Virtual Library'">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1903/1903162.png">
+    <title>Virtual Library</title>
+</head>
+<body>
+  <header th:include="fragments/header">
+    <a href="/" class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Free_logo.svg" alt="" width="150">
+    </a>
+    <div>
+        <input type="search" placeholder="Search...">
+        <button type="submit"><i>button</i></button>
+    </div>
+    <a class="add-book" href="">Add a book</a>
+  </header>
+  <main class="plp-main">
+    <div class="left-nav">
+      <h3>Others genres:</h3>
+     <div class="further-categories" th:each="category : ${categories}">
+       <a th:text= "${category.categoryName}" th:href="@{/category/{id}(id=${category.id})}"></a>
+     </div>
+    </div>
+    <div class="listing">
+      <div class="book-listing">
+        <div class="book-box" th:each="book : ${books}">
+          <img th:src="${book.coverBase64}" class="book-cover" alt="">
+          <p class="book-title" th:text = ${book.title}></p>
+            <a th:href="@{/download/{id}(id=${book.id})}" target="blank" class="start-read">Start Reading</a>
+            <a th:href="@{/details/{id}(id=${book.id})}" class="more-info">See details</a>
+      </div>
+      </div>
+    </div>
+  </main>
+  <footer th:include="fragments/footer" class="footer">
+  </footer>
+</body>

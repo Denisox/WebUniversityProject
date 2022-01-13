@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="fragments/head" th:with="pageTitle='Virtual Library'">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1903/1903162.png">
+    <title>Virtual Library</title>
+    <script defer src="modal.js"></script>
+</head>
+<body class="add-book-page">
+<header th:include="fragments/header">
+    <a href="index.html" class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Free_logo.svg" alt="" width="150">
+    </a>
+    <div>
+        <input type="search" placeholder="Search...">
+        <button type="submit"><i>button</i></button>
+    </div>
+    <a class="add-book" href="addbook.html">Add a book</a>
+</header>
+<main>
+    <div class = "container-fluid text-center text-danger">
+        <h3>[[${messageFail}]]</h3>
+    </div>
+    <div class = "container-fluid text-center text-success">
+        <h3>
+            <h3>[[${messageSuccess}]]</h3>
+        </h3>
+    </div>
+    <section class="add-book-section">
+        <h1>Fill in the form and enjoy YOUR book online now.</h1>
+        <form th:action="@{/upload}" method="post" id="addform"  enctype="multipart/form-data">
+            <label for="fname">Title:</label>
+            <input type="text" id="fname" name="fname" value="" required>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" value="" required>
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" value="" required>
+            <label for="pgsCount">Pages Count:</label>
+            <input type="text" id="pgsCount" name="pages" value="" required>
+            <label for="start">Published:</label>
+            <input type="text" id="start" name="trip-start" value="" min="1" required>
+            <label for="file">Book Content:</label>
+            <input type="file" id="file" name="file-upload" required>
+            <label for="cover">Book Cover:</label>
+            <input type="file" id="cover" name="cover-upload" required>
+            <label for="resume">Resume:</label>
+            <textarea id="resume" name="resume" rows="4" cols="50" maxlength="500" placeholder="Keep it simple..." required></textarea>
+            <button class="submit-form" type="submit" form="addform" value="Submit">Submit</button>
+        </form>
+    </section>
+</main>
+<footer th:include="fragments/footer" class="footer">
+</footer>
+</body>

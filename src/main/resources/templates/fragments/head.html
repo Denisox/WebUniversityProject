@@ -1,0 +1,5 @@
+<head th:fragment="head">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.css}" rel="stylesheet" type="text/css" />
+    <title th:if="${pageTitle}" th:text="${pageTitle}"></title>
+</head>

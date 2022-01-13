@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="fragments/head" th:with="pageTitle='Virtual Library'">
+</head>
+<body class="detailed-body">
+<header th:include="fragments/header">
+</header>
+<main>
+  <section class="detailed-section">
+    <div class="wrapper">
+      <div class="img"><img th:src="${book.coverBase64}" alt=""></div>
+      <div class="info">
+        <p class="book-detail">Genre: <i th:text="${book.getCategories().iterator().next().getCategoryName()}"></i></p>
+        <p class="book-detail">Author: <i th:text="${book.getAuthor().getFullName()}"></i></p>
+        <p class="book-detail">Count of Pages: <i th:text="${book.getPagesCount()}"></i></p>
+        <p class="book-detail">Published: <i th:text="${book.getYearPublished()}"></i></p>
+        <p class="book-detail">Resume: <i th:text="${book.description}"></i></p>
+        <a th:href="@{/download/{id}(id=${book.id})}" target="blank" class="start-read">Start Reading</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer th:include="fragments/footer" class="footer">
+</footer>
+</body>
+</html>

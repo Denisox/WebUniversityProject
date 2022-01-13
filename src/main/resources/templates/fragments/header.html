@@ -1,0 +1,17 @@
+<header th:fragment="header" class="header">
+    <a href="/" class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/meta/8/8f/New_black-orange_Wikibooks_logo.svg" alt="" width="100">
+    </a>
+
+    <form class = "form-inline my-2 my-lg-0"
+          th:action="@{/search}" method="get">
+        <input type="search" name="keyword" size="50"
+               class="form-control mr-sm-2" placeholder="Search..." required />
+        &nbsp;
+        <input type="submit" value="Search" class="btn btn-custom-style my-2 my-sm-0"/>
+    </form>
+
+
+
+    <a class="add-book" th:href="@{/upload-book}">Add a book</a>
+</header>

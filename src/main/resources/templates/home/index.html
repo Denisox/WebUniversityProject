@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head" th:with="pageTitle='Virtual Library'">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1903/1903162.png">
+    <title>Virtual Library</title>
+</head>
+<body>
+    <header th:include="fragments/header"></header>
+    <main>
+        <div>
+            <div class="benefits-section">
+                <div class="benefits-element">
+                    <img src="images/read.svg" alt="heart" width="170">
+                    <p class="benefits-colored-text">Read</p>
+                    <p>your favourite book</p>
+                </div>
+                <div class="benefits-element">
+                    <img src="images/discover.svg" alt="discover" width="170">
+                    <p class="benefits-colored-text">Discover</p>
+                    <p>new titles</p>
+                </div>
+                <div class="benefits-element">
+                    <img src="images/add.svg" alt="add" width="170">
+                    <p class="benefits-colored-text">Add</p>
+                    <p>something new</p>
+                </div>
+                <div class="benefits-element">
+                    <img src="images/imagine.svg" alt="brain" width="170">
+                    <p class="benefits-colored-text">Let</p>
+                    <p>the imagination lead</p>
+                </div>
+            </div>
+        </div>
+       <section class="genres">
+            <h2 class="spacing-add">Pick your genre</h2>
+                <div class="row spacing-add">
+                    <div class="col-sm-4" th:each=" category : ${categories}">
+                        <div class ="genres-wrapper">
+                            <a class="genre-box" th:href="@{/category/{id}(id=${category.id})}" th:text= "${category.categoryName}"></a>
+                        </div>
+                    </div>
+              </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="spacing-add">About Virtual Library</h2>
+            <div class="seo-wrapper">
+                <p>This virtual library was created by a group of college students. Nikola and Ivona are in charge of the Design and Frontend while Denis, Aleksandar and Georgi are responsible for the Backend and Database management. Enjoy your reading!</p>
+                <img src="images/teamwork.svg" alt="" loading="lazy">
+            </div>
+        </section>
+    </main>
+    <footer th:include="fragments/footer" class="footer">
+    </footer>
+</body>
+</html>
